@@ -135,7 +135,7 @@ foreach my $id (@IDs) {
 	}
 	$bio =~ s/<(.*?)>//g; # remove any stray tags
 
-	$csv->combine($id, $bio) or die $csv->error_input();
+	$csv->combine($id, encode_utf8($bio)) or die $csv->error_input();
 	print B3 $csv->string() . "\n";
 }
 
